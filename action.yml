@@ -1,0 +1,5 @@
+name: "Run Custom JavaScript"
+description: "A custom GitHub Action to execute a function from main.js"
+runs:
+  using: "node16"
+  main: "index.js"
