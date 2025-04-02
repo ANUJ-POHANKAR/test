@@ -1,0 +1,10 @@
+name: function
+on: [push,workflow_dispatch]
+jobs:
+  information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fetch code
+        uses: actions/checkout@v4
+      - name: NodeJs
+        uses: ./.github/actions/test
