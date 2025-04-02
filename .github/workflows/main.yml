@@ -12,8 +12,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: |
-          cd .github/actions/test
-          npm install
+        run: npm install
+        working-directory: .  
       - name: Custom Actions
         uses: ./
