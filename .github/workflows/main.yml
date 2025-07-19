@@ -1,6 +1,7 @@
 name: OIDC AWS Access Example
 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
 
 permissions:
   id-token: write
