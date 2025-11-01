@@ -2,7 +2,7 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-
+# ✅ Get latest Amazon Linux 2 AMI
 data "aws_ami" "amazon_linux" {
   most_recent = true
 
@@ -34,6 +34,7 @@ resource "aws_security_group" "launch_wizard" {
   }
 }
 
+# ✅ EC2 instance
 resource "aws_instance" "ec2" {
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
@@ -52,3 +53,8 @@ resource "aws_instance" "ec2" {
   }
 }
 
+# ✅ Instance type variable
+variable "instance_type" {
+  description = "Type of EC2 instance"
+  default     = "t2.micro"
+}
