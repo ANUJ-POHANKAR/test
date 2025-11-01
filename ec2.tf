@@ -14,6 +14,7 @@ ami = data.aws_ami.amazon_linux.id
 instance_type = var.instance_type
 vpc_security_group_ids = ["aws_security_group.launch_wizard.id"]
 user_data = << -EOF
+        #!/bin/bash
         sudo yum update -y
         sudo yum install nginx -y
         sudo systemctl start nginx
