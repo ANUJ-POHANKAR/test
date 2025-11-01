@@ -1,7 +1,11 @@
 name: OIDC AWS Access Example
 
-on: 
+on:
   workflow_dispatch:
+
+permissions:
+  id-token: write     # ✅ required for OIDC authentication
+  contents: read
 
 jobs:
   deploy:
@@ -14,24 +18,21 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v5.1.0
         with:
           aws-region: ap-south-1
           role-to-assume: arn:aws:iam::631158448933:role/admin-ec2
           role-session-name: Terraform
 
-
-      - name: Terraform init
+      - name: Terraform Init
         run: terraform init
 
-      - name: Terraform plan
+      - name: Terraform Plan
         run: terraform plan
 
-      - name: Terraform apply
+      - name: Terraform Apply
         run: terraform apply -auto-approve
 
       - name: Terraform Destroy
-        run: terrafrom destroy -auto-approve
-
-
+        run: terraform destroy -auto-approve
