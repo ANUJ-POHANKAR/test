@@ -1,4 +1,4 @@
-name: AWS Terraform Deploy
+name: tf
 
 on:
   workflow_dispatch:
